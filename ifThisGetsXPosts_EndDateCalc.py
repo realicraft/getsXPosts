@@ -1,6 +1,7 @@
 import datetime
 import sys
 import math
+import time
 
 print("Please use whole numbers (such as 42) for all inputs unless specified.")
 
@@ -32,3 +33,5 @@ print("At this rate, it will have been around " + str(until) + " days since the 
 cdate = adate + datetime.timedelta(days=until)
 print("The end date comes out to be:")
 print(datetime.date.isoformat(cdate))
+
+time.sleep(5)
