@@ -28,10 +28,21 @@ ppd = posts / diff
 print("That's " + str(round(ppd, 5)) + " posts per day!")
 print("You need to get to post " + str(goal) + " to win.")
 until = math.ceil(goal / ppd)
-print("At this rate, it will have been around " + str(until) + " days since the first post.")
+print("At this rate, it will be around " + str(until) + " days since the first post.")
 
 cdate = adate + datetime.timedelta(days=until)
 print("The end date comes out to be:")
 print(datetime.date.isoformat(cdate))
+
+mid = math.ceil((goal / 2) / ppd)
+if (posts > (goal / 2)):
+    phrase = "was "
+else:
+    phrase = "will be "
+print("At this rate, the midpoint " + phrase + str(mid) + " days since the first post.")
+
+ddate = adate + datetime.timedelta(days=mid)
+print("So the midpoint will be on:")
+print(datetime.date.isoformat(ddate))
 
 time.sleep(5)
