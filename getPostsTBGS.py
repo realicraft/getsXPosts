@@ -35,14 +35,18 @@ print("Found a page count of " + str(pageCount) + ".")
 i = 0
 postContents = {}
 
-print("Getting data from pages... [0/" + str(pageCount) + "]")
+sys.stdout.write("\rGetting data from pages... [0/" + str(pageCount) + "]")
+sys.stdout.flush()
 if (pageCount >= 100): updateSep = 9
 elif (pageCount >= 50): updateSep = 7
 elif (pageCount >= 20): updateSep = 5
 else: updateSep = 3
 
 while (i < pageCount):
-    if ((i != 0) and (i%updateSep == 0)): print("Getting data from pages... [" + str(i) + "/" + str(pageCount) + "]")
+    if ((i != 0) and (i%updateSep == 0)):
+        sys.stdout.write("\rGetting data from pages... [" + str(i) + "/" + str(pageCount) + "]")
+        sys.stdout.flush()
+        #print("Getting data from pages... [" + str(i) + "/" + str(pageCount) + "]")
     j = 0
     k = ""
     postContents[str(i+1)] = []
@@ -54,13 +58,14 @@ while (i < pageCount):
         postContents[str(i+1)].append(k)
         j += 1
     i += 1
-print("Getting data from pages... [" + str(pageCount) + "/" + str(pageCount) + "]")
+sys.stdout.write("\rGetting data from pages... [" + str(pageCount) + "/" + str(pageCount) + "]")
+sys.stdout.flush()
 time.sleep(0.25)
 #print(postContents)
 #print(json.dumps(postContents))
 #print(sys.path[0])
 
-print("Saving file...")
+print("\nSaving file...")
 filenameFull = filename + ".json"
 with open(os.path.join(sys.path[0], filenameFull), "w") as l:
     l.write(json.dumps(postContents, indent=4))
